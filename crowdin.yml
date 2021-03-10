@@ -1,0 +1,7 @@
+project_id_env: CROWDIN_PROJECT_ID
+api_token_env: CROWDIN_PERSONAL_TOKEN
+project_identifier: chaoscraft
+preserve_hierarchy: false
+files:
+  - source: src/generated/resources/assets/chaoscraft/lang/en_us.json
+    translation: "%locale%"

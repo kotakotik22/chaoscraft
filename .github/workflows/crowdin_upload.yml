@@ -4,6 +4,11 @@ on:
   push:
     branches: [ master ]
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+  CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
 jobs:
   synchronize-with-crowdin:
     runs-on: ubuntu-latest
@@ -16,11 +21,4 @@ jobs:
       - name: Upload to crowdin
         uses: crowdin/github-action@1.0.18
         with:
-          upload_translations: true
-          source: src/generated/resources/assets/chaoscraft/lang/en_us.json
-          download_translations: false
-          translation: noob
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
-          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          config: crowdin.yml
